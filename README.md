@@ -1,7 +1,7 @@
 # 🚀 Flask API with CI/CD Pipeline
 
-![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/<your-username>/<your-repo>/ci-cd.yml?branch=develop)
-![Docker Pulls](https://img.shields.io/docker/pulls/<your-docker-username>/flask-api)
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/vikas-wanchoo-devops/FlaskAPI-Docker-CICD/docker.yml?branch=develop)
+![Docker Pulls](https://img.shields.io/docker/pulls/vikaswanchoo/flask-api)
 
 ---
 
