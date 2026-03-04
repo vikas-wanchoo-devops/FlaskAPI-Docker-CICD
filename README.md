@@ -2,8 +2,8 @@
 
 ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/vikas-wanchoo-devops/FlaskAPI-Docker-CICD/docker.yml?branch=develop)
 ![Docker Pulls](https://img.shields.io/docker/pulls/vikaswanchoo/flask-api)
-![GitHub Repo stars](https://img.shields.io/github/stars/vikas-wanchoo-devops/FlaskAPI-Docker-CICD?style=social)
-![GitHub License](https://img.shields.io/github/license/vikas-wanchoo-devops/FlaskAPI-Docker-CICD)
+![GitHub Repo stars](https://img.shields.io/github/stars/vikas-wanchoo-devops/FlaskAPI-Docker-CICD?style=social&cacheSeconds=60)
+![GitHub License](https://img.shields.io/github/license/vikas-wanchoo-devops/FlaskAPI-Docker-CICD?cacheSeconds=60)
 
 ---
 
