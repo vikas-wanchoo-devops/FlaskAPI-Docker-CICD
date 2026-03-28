@@ -4,6 +4,7 @@
 ![Docker Pulls](https://img.shields.io/docker/pulls/vikaswanchoo/flask-api?cacheSeconds=60&timestamp=20260304)
 ![GitHub Repo stars](https://img.shields.io/github/stars/vikas-wanchoo-devops/FlaskAPI-Docker-CICD?style=social&cacheSeconds=60&timestamp=20260304)
 ![GitHub License](https://img.shields.io/github/license/vikas-wanchoo-devops/FlaskAPI-Docker-CICD?cacheSeconds=60&timestamp=20260304)
+[![Code Freeze Check](https://github.com/vikas-wanchoo-devops/FlaskAPI-Docker-CICD/actions/workflows/code-freeze.yml/badge.svg)](https://github.com/vikas-wanchoo-devops/FlaskAPI-Docker-CICD/actions/workflows/code-freeze.yml)
 
 ---
 
