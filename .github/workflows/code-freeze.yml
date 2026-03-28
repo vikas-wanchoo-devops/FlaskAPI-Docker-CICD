@@ -17,6 +17,11 @@ jobs:
           echo "Contents of freeze.json:"
           cat freeze.json
 
+      - name: Validate JSON
+        run: |
+          echo "Validating JSON format..."
+          jq . freeze.json
+
       - name: Parse freeze flag
         id: freeze
         run: |
