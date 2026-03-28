@@ -10,7 +10,7 @@ jobs:
     steps:
       - name: Fetch freeze flag
         run: |
-          curl -s https://raw.githubusercontent.com/<org>/code-freeze-config/main/freeze.json -o freeze.json
+          curl -s https://raw.githubusercontent.com/vikas-wanchoo-devops/release-freeze-control/main/freeze.json -o freeze.json
           cat freeze.json
 
       - name: Parse freeze flag
