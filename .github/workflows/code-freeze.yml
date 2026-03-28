@@ -1,6 +1,8 @@
 name: Code Freeze Check
 
 on:
+  repository_dispatch:
+    types: [freeze-updated]   # listens for central repo dispatch
   pull_request:
     types: [opened, synchronize, reopened, ready_for_review]
 
