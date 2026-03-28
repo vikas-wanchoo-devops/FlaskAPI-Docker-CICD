@@ -1,0 +1,26 @@
+name: Code Freeze Check
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+
+jobs:
+  check-freeze:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch freeze flag
+        run: |
+          curl -s https://raw.githubusercontent.com/<org>/code-freeze-config/main/freeze.json -o freeze.json
+          cat freeze.json
+
+      - name: Parse freeze flag
+        id: freeze
+        run: |
+          FREEZE=$(jq -r '.freeze_active' freeze.json)
+          echo "freeze=$FREEZE" >> $GITHUB_OUTPUT
+
+      - name: Block merge if freeze active
+        if: steps.freeze.outputs.freeze == 'true'
+        run: |
+          echo "❌ Code freeze is active. Merging is blocked."
+          exit 1
