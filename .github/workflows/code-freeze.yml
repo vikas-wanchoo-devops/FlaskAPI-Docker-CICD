@@ -1,0 +1,37 @@
+name: Code Freeze Check
+
+on:
+  repository_dispatch:
+    types: [freeze-updated]   # listens for central repo dispatch
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+
+jobs:
+  check-freeze:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch freeze flag
+        run: |
+          curl -s https://raw.githubusercontent.com/vikas-wanchoo-devops/release-freeze-control/main/code-freeze-config/freeze.json -o freeze.json
+
+      - name: Debug freeze.json
+        run: |
+          echo "Contents of freeze.json:"
+          cat freeze.json
+
+      - name: Validate JSON
+        run: |
+          echo "Validating JSON format..."
+          jq . freeze.json
+
+      - name: Parse freeze flag
+        id: freeze
+        run: |
+          FREEZE=$(jq -r '.freeze_active' freeze.json)
+          echo "freeze=$FREEZE" >> $GITHUB_OUTPUT
+
+      - name: Block merge if freeze active
+        if: steps.freeze.outputs.freeze == 'true'
+        run: |
+          echo "❌ Code freeze is active. Merging is blocked."
+          exit 1
