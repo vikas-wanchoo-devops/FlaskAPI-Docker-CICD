@@ -10,10 +10,12 @@ jobs:
   check-freeze:
     runs-on: ubuntu-latest
     steps:
-      - name: Fetch freeze flag
+      - name: Fetch freeze.json from control repo (API, no cache)
         run: |
           curl -s -H "Authorization: Bearer ${{ secrets.PAT_TOKEN }}" \
-            https://raw.githubusercontent.com/vikas-wanchoo-devops/release-freeze-control/main/code-freeze-config/freeze.json -o freeze.json
+            -H "Accept: application/vnd.github.v3.raw" \
+            https://api.github.com/repos/vikas-wanchoo-devops/release-freeze-control/contents/code-freeze-config/freeze.json?ref=main \
+            -o freeze.json
 
       - name: Debug freeze.json
         run: |
