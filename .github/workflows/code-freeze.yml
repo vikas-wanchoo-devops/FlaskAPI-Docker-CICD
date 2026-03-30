@@ -31,7 +31,14 @@ jobs:
           echo "freeze=$FREEZE" >> $GITHUB_OUTPUT
 
       - name: Block merge if freeze active
-        if: steps.freeze.outputs.freeze == 'true'
+        if: ${{ steps.freeze.outputs.freeze == 'true' }}
         run: |
-          echo "❌ Code freeze is active. Merging is blocked."
+          REASON=$(jq -r '.reason' freeze.json)
+          echo "❌ Code freeze is active. Merging is blocked. Reason: $REASON"
           exit 1
+
+      - name: Allow merge if freeze inactive
+        if: ${{ steps.freeze.outputs.freeze == 'false' }}
+        run: |
+          REASON=$(jq -r '.reason' freeze.json)
+          echo "✅ Code freeze is inactive. Merges are allowed. Reason: $REASON"
