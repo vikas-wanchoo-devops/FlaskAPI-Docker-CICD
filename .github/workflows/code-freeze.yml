@@ -2,7 +2,7 @@ name: Code Freeze Check
 
 on:
   repository_dispatch:
-    types: [freeze-updated]   # listens for central repo dispatch
+    types: [freeze-updated]
   pull_request:
     types: [opened, synchronize, reopened, ready_for_review]
 
@@ -21,9 +21,7 @@ jobs:
           cat freeze.json
 
       - name: Validate JSON
-        run: |
-          echo "Validating JSON format..."
-          jq . freeze.json
+        run: jq . freeze.json
 
       - name: Parse freeze flag
         id: freeze
@@ -42,5 +40,4 @@ jobs:
       - name: Allow merge if freeze inactive
         if: ${{ steps.freeze.outputs.freeze == 'false' }}
         run: |
-          REASON=$(jq -r '.reason' freeze.json)
-          echo "✅ Code freeze is lifted. Merges are now permitted. Reason: $REASON"
+          echo "✅ Code freeze has ended. Merges are now permitted."
