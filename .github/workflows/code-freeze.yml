@@ -43,4 +43,4 @@ jobs:
         if: ${{ steps.freeze.outputs.freeze == 'false' }}
         run: |
           REASON=$(jq -r '.reason' freeze.json)
-          echo "✅ Code freeze is inactive. Merges are allowed. Reason: $REASON"
+          echo "✅ Code freeze is lifted. Merges are now permitted. Reason: $REASON"
