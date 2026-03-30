@@ -30,7 +30,7 @@ jobs:
         run: |
           FREEZE=$(jq -r '.freeze_active' freeze.json | tr '[:upper:]' '[:lower:]')
           echo "Parsed freeze flag: $FREEZE"
-          echo "freeze=$FREEZE" >> $GITHUB_OUTPUT
+          echo "freeze=$FREEZE" >> "$GITHUB_OUTPUT"
 
       - name: Block merge if freeze active
         if: ${{ steps.freeze.outputs.freeze == 'true' }}
